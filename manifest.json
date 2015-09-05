@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Buffer Values",
+  "version": "1.0.0",
+  "description": "The wonderful Buffer Values replace your New Tab Page!",
+  "chrome_url_overrides" : {
+    "newtab": "buffer-values.html"
+  },
+  "icons": {
+    "128": "icon-128x128.png",
+    "16": "icon16.png",
+    "48": "icon48.png"
+  },
+}
