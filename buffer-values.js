@@ -1,38 +1,59 @@
 (function() {
   'use strict';
 
+  var displayModes = ['pictures', 'colors'];
+
   var backgroundImages = [
-    ['../images/backgrounds/epic-iceland.jpg',
-     '../images/backgrounds/orange-light-in-queenstown-new-zealand.jpg'],
-    ['../images/backgrounds/jacks-point.jpg',
-     '../images/backgrounds/tekapo-new-zealand-trey-ratcliff-2.jpg'],
-    ['../images/backgrounds/trey-ratcliff-walking-alone-and-being-somewhat-lost-on-which-way.jpg',
-     '../images/backgrounds/auckland-night.jpg'],
-    ['../images/backgrounds/trey-ratcliff-new-york-inception.jpg',
-     '../images/backgrounds/bang2.jpg'],
-    ['../images/backgrounds/ohau-cliff-hawaii-trey-ratcliff.jpg',
-     '../images/backgrounds/sleeping-in.jpg'],
-    ['../images/backgrounds/day-17-randy-erebus-halo.jpg',
-     '../images/backgrounds/sheep-in-new-zealand.jpg'],
-    ['../images/backgrounds/the-lonely-trinity.jpg',
-     '../images/backgrounds/the-water-in-autumn.jpg'],
-    ['../images/backgrounds/morning-with-coffee-in-yellowstone.jpg',
-     '../images/backgrounds/trey-ratcliff-medieval-village.jpg'],
-    ['../images/backgrounds/behind-my-house-new-zealand.jpg',
-     '../images/backgrounds/bonus-pink-sky.jpg'],
-    ['../images/backgrounds/farewell-san-francisco.jpg',
-     '../images/backgrounds/seattle.jpg']
+    ['../graphics/backgrounds/epic-iceland.jpg',
+     '../graphics/backgrounds/orange-light-in-queenstown-new-zealand.jpg'],
+    ['../graphics/backgrounds/jacks-point.jpg',
+     '../graphics/backgrounds/tekapo-new-zealand-trey-ratcliff-2.jpg'],
+    ['../graphics/backgrounds/trey-ratcliff-walking-alone-and-being-somewhat-lost-on-which-way.jpg',
+     '../graphics/backgrounds/auckland-night.jpg'],
+    ['../graphics/backgrounds/trey-ratcliff-new-york-inception.jpg',
+     '../graphics/backgrounds/bang2.jpg'],
+    ['../graphics/backgrounds/ohau-cliff-hawaii-trey-ratcliff.jpg',
+     '../graphics/backgrounds/sleeping-in.jpg'],
+    ['../graphics/backgrounds/day-17-randy-erebus-halo.jpg',
+     '../graphics/backgrounds/sheep-in-new-zealand.jpg'],
+    ['../graphics/backgrounds/the-lonely-trinity.jpg',
+     '../graphics/backgrounds/the-water-in-autumn.jpg'],
+    ['../graphics/backgrounds/morning-with-coffee-in-yellowstone.jpg',
+     '../graphics/backgrounds/trey-ratcliff-medieval-village.jpg'],
+    ['../graphics/backgrounds/behind-my-house-new-zealand.jpg',
+     '../graphics/backgrounds/bonus-pink-sky.jpg'],
+    ['../graphics/backgrounds/farewell-san-francisco.jpg',
+     '../graphics/backgrounds/seattle.jpg']
   ];
 
-  var displayMode = 'colors'; // 'colors', 'pictures'
-  var values = document.querySelectorAll('.value');
-  var randValueIndex = Math.floor(Math.random() * values.length);
-  var randValue = values[randValueIndex];
+  var randValueIndex;
 
-  document.body.classList.add('mode-' + displayMode);
-  randValue.classList.add('is-visible'); // \o/
+  init();
 
-  displayMode == 'pictures' ? displayPictures() : displayColors();
+  function init() {
+    var displayMode = localStorage.getItem('mode') || displayModes[0];
+    var values = document.querySelectorAll('.value');
+    var randValue;
+
+    randValueIndex = Math.floor(Math.random() * values.length);
+    randValue = values[randValueIndex];
+
+    document.body.classList.add('mode-' + displayMode);
+    randValue.classList.add('is-visible'); // \o/
+
+    displayMode == 'pictures' ? displayPictures() : displayColors();
+
+    initBindings();
+  }
+
+  function initBindings() {
+    document.getElementById('mode-selector').addEventListener('click', function(e) {
+      if (e.target.nodeName != 'BUTTON') return;
+
+      var mode = e.target.getAttribute('data-select-mode');
+      changeMode(mode);
+    });
+  }
 
   function displayPictures() {
     var randBackgroundIndex;
@@ -69,6 +90,13 @@
 
   function displayColors() {
     document.body.classList.add('color-' + (randValueIndex + 1));
+  }
+
+  function changeMode(mode) {
+    if (displayModes.indexOf(mode) == -1) return;
+
+    localStorage.setItem('mode', mode);
+    location.reload();
   }
 
 })();

@@ -207,3 +207,78 @@ body.mode-colors.color-10 {
   font-weight: 400;
   opacity: 1;
 }
+
+/* Mode selector */
+
+#mode-selector {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0.1;
+}
+
+#mode-selector:hover {
+  opacity: 1;
+}
+
+#mode-selector button {
+  display: none;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.mode-pictures #mode-selector .select-colors-mode {
+  display: block;
+  background-image: url(../graphics/icons/icon-color-wheel.svg);
+}
+
+.mode-colors #mode-selector .select-pictures-mode {
+  display: block;
+  background-color: red;
+  -webkit-mask-image: url(../graphics/icons/icon-picture.svg);
+}
+
+.mode-colors.color-1 #mode-selector .select-pictures-mode {
+  background-color: #f8c211;
+}
+
+.mode-colors.color-2 #mode-selector .select-pictures-mode {
+  background-color: #51c0d1;
+}
+
+.mode-colors.color-3 #mode-selector .select-pictures-mode {
+  background-color: #85c13b;
+}
+
+.mode-colors.color-4 #mode-selector .select-pictures-mode {
+  background-color: #f2961f;
+}
+
+.mode-colors.color-5 #mode-selector .select-pictures-mode {
+  background-color: #932880;
+}
+
+.mode-colors.color-6 #mode-selector .select-pictures-mode {
+  background-color: #02a5ac;
+}
+
+.mode-colors.color-7 #mode-selector .select-pictures-mode {
+  background-color: #d8182b;
+}
+
+.mode-colors.color-8 #mode-selector .select-pictures-mode {
+  background-color: #f9c517;
+}
+
+.mode-colors.color-9 #mode-selector .select-pictures-mode {
+  background-color: #4cbad1;
+}
+
+.mode-colors.color-1 #mode-selector .select-pictures-mode) {
+  background-color: #e65426;
+}
