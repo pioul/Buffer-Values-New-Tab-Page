@@ -78,7 +78,17 @@ body {
 }
 
 .value ul li {
+  position: relative;
   margin: 1em 0;
+  list-style: none;
+}
+
+.value ul li::before {
+  content: "•";
+  position: absolute;
+  left: -20px;
+  font-size: 14px;
+  opacity: 0.9;
 }
 
 body.mode-pictures::before {
