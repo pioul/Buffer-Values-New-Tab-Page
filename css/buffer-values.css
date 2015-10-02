@@ -111,9 +111,19 @@ body.mode-pictures::before {
   to   { opacity: 0.3; }
 }
 
+@keyframes fade-in-cattime {
+  from { opacity: 0; }
+  to   { opacity: 0.8; }
+}
+
 body.mode-pictures.background-is-loaded::before {
   animation: fade-in 1s;
   opacity: 0.3;
+}
+
+body.mode-pictures.background-is-loaded.is-cattime::before {
+  animation: fade-in-cattime 1s;
+  opacity: 0.8;
 }
 
 .mode-pictures img {
@@ -229,6 +239,10 @@ body.mode-colors.color-10 {
 
 #mode-selector:hover {
   opacity: 1;
+}
+
+.is-cattime #mode-selector {
+  display: none;
 }
 
 #mode-selector button {

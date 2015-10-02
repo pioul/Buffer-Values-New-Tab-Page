@@ -26,22 +26,34 @@
      '../graphics/backgrounds/seattle.jpg']
   ];
 
-  var randValueIndex;
+  var itscattimeImages = [
+    '../graphics/itscattime/cat-1.jpg',
+    '../graphics/itscattime/cat-2.jpg'
+  ];
 
   init();
 
   function init() {
-    var displayMode = localStorage.getItem('mode') || displayModes[0];
     var values = document.querySelectorAll('.value');
+    var isItCatTime = wouldItBeCatTime();
+    var displayMode = isItCatTime ? displayModes[0] : (localStorage.getItem('mode') || displayModes[0]);
+    var randValueIndex;
     var randValue;
 
-    randValueIndex = Math.floor(Math.random() * values.length);
+    randValueIndex = getRandom(values.length);
     randValue = values[randValueIndex];
 
     document.body.classList.add('mode-' + displayMode);
     randValue.classList.add('is-visible'); // \o/
 
-    displayMode == 'pictures' ? displayPictures() : displayColors();
+
+
+    if (isItCatTime) {
+      displayPictures('itscattime', randValueIndex);
+      document.body.classList.add('is-cattime');
+    } else {
+      displayMode == 'pictures' ? displayPictures('backgrounds', randValueIndex) : displayColors(randValueIndex);
+    }
 
     initBindings();
   }
@@ -55,10 +67,12 @@
     });
   }
 
-  function displayPictures() {
+  function displayPictures(pictureSetName, randValueIndex) {
     var randBackgroundIndex;
     var fadeImgIn;
     var img;
+
+    var pictureSet = getPictureSet(pictureSetName);
 
     // Load image
     // We're using a hidden img element to load the image and be able to listen to its
@@ -68,8 +82,8 @@
     // when animated, so we use a pseudo-element's background with 'background-size: cover'
     // to display the image.
     img = document.createElement('img');
-    randBackgroundIndex = Math.floor(Math.random() * 2); // 2 backgrounds each
-    img.src = backgroundImages[randValueIndex][randBackgroundIndex];
+    randBackgroundIndex = getRandom(pictureSet.range); // 2 backgrounds each
+    img.src = pictureSet.getSrc(randValueIndex, randBackgroundIndex);
     document.body.appendChild(img);
 
     // Once loaded, reveal it
@@ -88,8 +102,39 @@
       else img.addEventListener('load', fadeImgIn); // Or fade in when loaded
   }
 
-  function displayColors() {
+  function displayColors(randValueIndex) {
     document.body.classList.add('color-' + (randValueIndex + 1));
+  }
+
+  // Return an integer between 0 and (range - 1)
+  function getRandom(range) {
+    return Math.floor(Math.random() * range);
+  }
+
+  function getPictureSet(pictureSetName) {
+    var pictureSets = {
+      backgrounds: {
+        range: 2, // Each value has 2 backgrounds
+        arr: backgroundImages,
+        getSrc: function(randValueIndex, randBackgroundIndex) {
+          return this.arr[randValueIndex][randBackgroundIndex]
+        }
+      },
+       itscattime: {
+        range: itscattimeImages.length,
+        arr: itscattimeImages,
+        getSrc: function(randValueIndex, randBackgroundIndex) {
+          return this.arr[randBackgroundIndex]
+        }
+      }
+    };
+
+    return pictureSets[pictureSetName];
+  }
+
+  // Well, yes
+  function wouldItBeCatTime() {
+    return getRandom(500) == 0;
   }
 
   function changeMode(mode) {
