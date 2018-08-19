@@ -27,27 +27,27 @@ body {
 }
 
 .value:nth-child(1) h2 {
-  font-size: 51px;
+  font-size: 70px;
 }
 
 .value:nth-child(2) h2 {
-  font-size: 68px;
+  font-size: 84px;
 }
 
 .value:nth-child(3) h2 {
-  font-size: 48px;
+  font-size: 88px;
 }
 
 .value:nth-child(4) h2 {
-  font-size: 90px;
+  font-size: 88px;
 }
 
 .value:nth-child(5) h2 {
-  font-size: 58px;
+  font-size: 78px;
 }
 
 .value:nth-child(6) h2 {
-  font-size: 61px;
+  font-size: 74px;
 }
 
 .value:nth-child(7) h2 {
@@ -139,83 +139,51 @@ body.mode-pictures.background-is-loaded.is-cattime::before {
 /* Colors Mode */
 
 body.mode-colors.color-1 {
-  background-color: rgba(248, 194, 17, 0.15);
+  background-color: rgba(35, 130, 212, 0.15);
 }
 
 .mode-colors .value:nth-child(1) {
-  color: #f8c211;
+  color: #2382d4;
 }
 
 body.mode-colors.color-2 {
-  background-color: rgba(81, 192, 209, 0.15);
+  background-color: rgba(253, 223, 82, 0.15);
 }
 
 .mode-colors .value:nth-child(2) {
-  color: #51c0d1;
+  color: #fddf52;
 }
 
 body.mode-colors.color-3 {
-  background-color: rgba(133, 193, 59, 0.15);
+  background-color: rgba(51, 212, 172, 0.15);
 }
 
 .mode-colors .value:nth-child(3) {
-  color: #85c13b;
+  color: #33d4ac;
 }
 
 body.mode-colors.color-4 {
-  background-color: rgba(242, 150, 31, 0.15);
+  background-color: rgba(252, 105, 74, 0.15);
 }
 
 .mode-colors .value:nth-child(4) {
-  color: #f2961f;
+  color: #fc694a;
 }
 
 body.mode-colors.color-5 {
-  background-color: rgba(147, 40, 128, 0.15);
+  background-color: rgba(35, 130, 212, 0.15);
 }
 
 .mode-colors .value:nth-child(5) {
-  color: #932880;
+  color: #2382d4;
 }
 
 body.mode-colors.color-6 {
-  background-color: rgba(2, 165, 172, 0.15);
+  background-color: rgba(51, 212, 172, 0.15);
 }
 
 .mode-colors .value:nth-child(6) {
-  color: #02a5ac;
-}
-
-body.mode-colors.color-7 {
-  background-color: rgba(216, 24, 43, 0.15);
-}
-
-.mode-colors .value:nth-child(7) {
-  color: #d8182b;
-}
-
-body.mode-colors.color-8 {
-  background-color: rgba(249, 197, 23, 0.15);
-}
-
-.mode-colors .value:nth-child(8) {
-  color: #f9c517;
-}
-
-body.mode-colors.color-9 {
-  background-color: rgba(76, 186, 209, 0.15);
-}
-
-.mode-colors .value:nth-child(9) {
-  color: #4cbad1;
-}
-
-body.mode-colors.color-10 {
-  background-color: rgba(230, 84, 38, 0.15);
-}
-
-.mode-colors .value:nth-child(10) {
-  color: #e65426;
+  color: #33d4ac;
 }
 
 .mode-colors .value h2 {
